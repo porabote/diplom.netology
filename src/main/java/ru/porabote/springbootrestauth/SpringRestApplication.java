@@ -3,7 +3,6 @@ package ru.porabote.springbootrestauth;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,8 +15,6 @@ import ru.porabote.springbootrestauth.model.UserModel;
 
 import java.util.List;
 
-import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
-
 @RestController
 @SpringBootApplication
 public class SpringRestApplication {
@@ -26,22 +23,14 @@ public class SpringRestApplication {
         SpringApplication.run(SpringRestApplication.class, args);
     }
 
-//    @Override
-//    public Integer formLogin() {
-//        return 89;
-//    }
-
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers(antMatcher(HttpMethod.POST, "/login")).permitAll()
+                        .requestMatchers("/login", "/register").permitAll()
                         .requestMatchers("/file", "/test").authenticated()
                 );
-        //http.j
-       // http.formLogin(withDefaults());
-        //http.httpBasic(withDefaults());
         return http.build();
     }
 
@@ -51,43 +40,6 @@ public class SpringRestApplication {
         String resp = new String("{\"auth-token\": \"kjhsdfkjhaskjdf\"}");
         return resp;
     }
-
-//    @PostMapping("/login")
-//    @Secured({"READ"})
-//    public String login(@RequestParam("user") String user, @RequestParam("password") String password) {
-//        String resp = new String("{\"auth-token\": \"kjhsdfkjhaskjdf\"}");
-//        return "ui";
-//    }
-
-//    @GetMapping("/home")
-//    @Secured({"ROLE_ADMIN"})
-//    public String hi() {
-//        return "home";
-//    }
-
-//    @GetMapping("/login")
-//    @Secured({"READ"})
-//    public String bye() {
-//        return "login";
-//    }
-
-    //    @GetMapping("/write")
-//    @RolesAllowed({"WRITE"})
-//    public String write() {
-//        return "write";
-//    }
-//
-//    @GetMapping("/update")
-//    @PreAuthorize("hasAuthority('WRITE') or hasAuthority('DELETE')")
-//    public String update() {
-//        return "update";
-//    }
-//
-//    @GetMapping("/profile")
-//    @PreAuthorize("#username == authentication.principal.username")
-//    public String profile(String username) {
-//        return "It profile " + username;
-//    }
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
