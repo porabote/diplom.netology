@@ -1,33 +1,42 @@
 package ru.porabote.springbootrestauth.controller;
 
-import com.google.gson.Gson;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import ru.porabote.springbootrestauth.service.Authorities;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 import ru.porabote.springbootrestauth.service.AuthorizationService;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 
 @RestController
 public class AuthorizationController {
 
-    AuthorizationService service;
+    private final AuthorizationService authorizationService;
 
-    private Gson gson = new Gson();
-
-    public AuthorizationController(AuthorizationService service) {
-        this.service = service;
+    public AuthorizationController(AuthorizationService authorizationService) {
+        this.authorizationService = authorizationService;
     }
 
-    @GetMapping("/authorize")
-    public List<Authorities> getAuthorities(@RequestParam("login") String user, @RequestParam("password") String password) {
-        return service.getAuthorities(user, password);
+    @RequestMapping(
+            value = "/login",
+            method = RequestMethod.POST)
+    public ResponseEntity<String> login(@RequestBody Map<String, String> payload) throws JSONException {
+
+        String login = payload.get("login");
+        String password = payload.get("password");
+        System.out.println(login);
+        Authentication authenticationRequest =
+                UsernamePasswordAuthenticationToken.unauthenticated(login, password);
+        String token =
+                this.authorizationService.getAuthorities(authenticationRequest);
+        // ...
+        return new ResponseEntity<String>(token, HttpStatus.OK);
+    }
+
+    public record LoginRequest(String username, String password) {
     }
 
 }

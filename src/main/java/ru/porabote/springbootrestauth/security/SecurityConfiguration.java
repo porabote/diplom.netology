@@ -30,12 +30,12 @@ public class SecurityConfiguration {
 //        source.registerCorsConfiguration("/**", configuration);
 //        return source;
 //    }
-    @Bean
-    public UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("USER").build());
-        return manager;
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+//        manager.createUser(User.withDefaultPasswordEncoder().username("login").password("password").roles("USER").build());
+//        return manager;
+//    }
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
