@@ -1,14 +1,12 @@
 package ru.porabote.springbootrestauth.service;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 import ru.porabote.springbootrestauth.model.UserModel;
 import ru.porabote.springbootrestauth.repository.UserRepository;
 import ru.porabote.springbootrestauth.service.exception.InvalidCredentials;
 import ru.porabote.springbootrestauth.service.exception.UnauthorizedUser;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service

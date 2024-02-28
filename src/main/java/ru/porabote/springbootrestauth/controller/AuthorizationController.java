@@ -35,19 +35,6 @@ public class AuthorizationController {
 
         Authentication authenticationRequest =
                 UsernamePasswordAuthenticationToken.unauthenticated(login, password);
-//        System.out.println(authenticationRequest);
-//        Authentication authenticationResponse =
-//                this.authorizationService.getAuthorities(authenticationRequest);
-
-//        UsernamePasswordAuthenticationToken authReq
-//                = new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword());
-//        Authentication auth = authorizationService.authenticate(authReq);
-
-       // SecurityContext sc = SecurityContextHolder.getContext();
-     //   sc.setAuthentication(authenticationRequest);
-//        HttpSession session = req.getSession(true);
-//        session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, sc);
-        // ...
 
         UserModel user = this.authorizationService.getAuthorities(authenticationRequest);
 
