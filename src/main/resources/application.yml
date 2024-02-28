@@ -1,0 +1,12 @@
+spring:
+  security:
+    user:
+      name: den
+      password: denp
+  datasource:
+    password: root7893727!
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/diplom
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+server:
+  port : 8080

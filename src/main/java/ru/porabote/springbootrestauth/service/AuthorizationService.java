@@ -1,8 +1,5 @@
 package ru.porabote.springbootrestauth.service;
 
-import org.apache.el.parser.Token;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import ru.porabote.springbootrestauth.repository.UserRepository;
@@ -19,7 +16,7 @@ public class AuthorizationService {
         this.userRepository = userRepository;
     }
 
-    public String getAuthorities(Authentication authenticationRequest) throws JSONException {
+    public String getAuthorities(Authentication authenticationRequest) {
 
         String login = authenticationRequest.getName();
         Object credentials = authenticationRequest.getCredentials();
@@ -33,8 +30,6 @@ public class AuthorizationService {
             throw new UnauthorizedUser("Unknown user " + login);
         }
 
-        JSONObject jo = new JSONObject();
-        jo.put("auth-token", "blabla");
         return "{\"auth-token\": \"blabla\"}";
     }
 

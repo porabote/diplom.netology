@@ -7,53 +7,73 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(Arrays.asList("https://diplom.porabote.ru"));
-//        configuration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
-//        configuration.setAllowCredentials(true);
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-//        manager.createUser(User.withDefaultPasswordEncoder().username("login").password("password").roles("USER").build());
-//        return manager;
-//    }
+    @Bean
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource()))
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests((authorize) -> authorize
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.formLogin()
-//                .and()
-//                .authorizeHttpRequests().antMatchers("/write").hasAuthority("write")
-//                .and()
-//                .authorizeHttpRequests().antMatchers("/hi").permitAll()
-//                .and()
-//                .authorizeRequests().anyRequest().authenticated();
-//    }
+                        .requestMatchers("/login", "/file", "/list").permitAll()
+                        .anyRequest().authenticated()
+                )
+        ;
+        return http.build();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails userDetails = User.withDefaultPasswordEncoder()
+                .username("den")
+                .password("denp")
+                .roles("USER")
+                .build();
+        System.out.println(userDetails);
+        return new InMemoryUserDetailsManager(userDetails);
+    }
+
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("https://diplom.porabote.ru"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedHeaders(List.of("*"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 //    @Bean
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.inMemoryAuthentication()
-//                .withUser("Denis").password("pas123").roles("READ")
-//                .and().withUser("Petya").password("pas1235").roles("WRITE")
-//                .and().withUser("Leva").password("pas1236").roles("DELETE");//.authorities("bye");
+//                .withUser("den").password("denp").roles("READ", "WRITE", "DELETE")
+//              //  .and().withUser("Petya").password("pas1235").roles("WRITE")
+//;//.authorities("bye");
 //    }
 
 }
