@@ -33,8 +33,8 @@ public class AuthorizationController {
         String login = payload.get("login");
         String password = payload.get("password");
 
-//        Authentication authenticationRequest =
-//                UsernamePasswordAuthenticationToken.unauthenticated(login, password);
+        Authentication authenticationRequest =
+                UsernamePasswordAuthenticationToken.unauthenticated(login, password);
 //        System.out.println(authenticationRequest);
 //        Authentication authenticationResponse =
 //                this.authorizationService.getAuthorities(authenticationRequest);
@@ -48,6 +48,8 @@ public class AuthorizationController {
 //        HttpSession session = req.getSession(true);
 //        session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, sc);
         // ...
+
+        UserModel user = this.authorizationService.getAuthorities(authenticationRequest);
 
         String token = "{\"auth-token\": \"" + "some_token" + "\"}";
         return new ResponseEntity<String>(token, HttpStatus.OK);

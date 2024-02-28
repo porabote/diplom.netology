@@ -18,8 +18,7 @@ public class RequestHeaderAuthenticationProvider implements AuthenticationProvid
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String authSecretKey = String.valueOf(authentication.getPrincipal()).replace("Bearer ", "");
-        System.out.println(authSecretKey);
-        System.out.println(apiAuthSecret);
+
         if(StringUtils.isBlank(authSecretKey) || !authSecretKey.equals(apiAuthSecret)) {
             throw new BadCredentialsException("Bad Request Header Credentials");
         }

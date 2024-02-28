@@ -19,7 +19,7 @@ public class AuthorizationService {
         this.userRepository = userRepository;
     }
 
-    public Authentication getAuthorities(Authentication authenticationRequest) {
+    public UserModel getAuthorities(Authentication authenticationRequest) {
 
         String login = authenticationRequest.getName();
         Object credentials = authenticationRequest.getCredentials();
@@ -28,52 +28,13 @@ public class AuthorizationService {
         if (isEmpty(login) || isEmpty(password)) {
             throw new InvalidCredentials("User name or password is empty");
         }
-//        List<Authorities> userAuthorities = userRepository.getUserAuthorities(login, password);
-//        if (isEmpty(userAuthorities)) {
-//            throw new UnauthorizedUser("Unknown user " + login);
-//        }
 
         UserModel user = userRepository.findFirstByUsername(login);
 
         if (user == null) {
-            throw new UnauthorizedUser("Unknown user 2 " + login + password);
+            throw new UnauthorizedUser("Unknown user " + login + password);
         }
-        return new Authentication() {
-            @Override
-            public Collection<? extends GrantedAuthority> getAuthorities() {
-                return null;
-            }
-
-            @Override
-            public Object getCredentials() {
-                return null;
-            }
-
-            @Override
-            public Object getDetails() {
-                return null;
-            }
-
-            @Override
-            public Object getPrincipal() {
-                return null;
-            }
-
-            @Override
-            public boolean isAuthenticated() {
-                return true;
-            }
-
-            @Override
-            public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
-
-            }
-
-            @Override
-            public String getName() {
-                return null;
-            }
-        };
+        return user;
     }
 
     private boolean isEmpty(String str) {
