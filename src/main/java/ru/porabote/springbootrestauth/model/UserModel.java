@@ -13,6 +13,7 @@ public class UserModel {
     private Integer id;
     public String login;
     public String password;
+    public String token;
 
     public String getPassword() {
         return password;
@@ -27,6 +28,13 @@ public class UserModel {
     }
     public void setLogin(String name) {
         this.login = name;
+    }
+
+    public String getToken() {
+        return token;
+    }
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public UserModel(String login, String password) {

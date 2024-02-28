@@ -10,6 +10,6 @@ import ru.porabote.springbootrestauth.service.Authorities;
 public interface UserRepository extends CrudRepository<UserModel, Integer> {
 
     @Transactional
-    UserModel findFirstByLoginAndPassword(String login, String password);
+    UserModel findFirstByLogin(String login);
 
 }

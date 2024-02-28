@@ -31,12 +31,12 @@ public class AuthorizationService {
 //            throw new UnauthorizedUser("Unknown user " + login);
 //        }
 
-        UserModel user = userRepository.findFirstByLoginAndPassword(login, password);
-
+        UserModel user = userRepository.findFirstByLogin(login);
+        System.out.println(user.getToken());
         if (user == null) {
-            throw new UnauthorizedUser("Unknown user " + login);
+            throw new UnauthorizedUser("Unknown user " + login + password);
         }
-        return "{\"auth-token\": \"blabla\"}";
+        return "{\"auth-token\": \"" + user.getToken() + "\"}";
     }
 
     private boolean isEmpty(String str) {
