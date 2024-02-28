@@ -11,7 +11,7 @@ public class UserModel {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    public String login;
+    public String username;
     public String password;
     public String token;
 
@@ -23,11 +23,11 @@ public class UserModel {
         this.password = psw;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
-    public void setLogin(String name) {
-        this.login = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public String getToken() {
@@ -37,12 +37,16 @@ public class UserModel {
         this.token = token;
     }
 
-    public UserModel(String login, String password) {
-        this.login = login;
+    public UserModel(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
     public UserModel() {
 
+    }
+
+    public String suUsernameAuthenticationToken() {
+        return "some_token";
     }
 }

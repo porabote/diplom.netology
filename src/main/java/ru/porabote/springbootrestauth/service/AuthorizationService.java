@@ -1,12 +1,14 @@
 package ru.porabote.springbootrestauth.service;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 import ru.porabote.springbootrestauth.model.UserModel;
 import ru.porabote.springbootrestauth.repository.UserRepository;
 import ru.porabote.springbootrestauth.service.exception.InvalidCredentials;
 import ru.porabote.springbootrestauth.service.exception.UnauthorizedUser;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -17,7 +19,7 @@ public class AuthorizationService {
         this.userRepository = userRepository;
     }
 
-    public UserModel getAuthorities(Authentication authenticationRequest) {
+    public Authentication getAuthorities(Authentication authenticationRequest) {
 
         String login = authenticationRequest.getName();
         Object credentials = authenticationRequest.getCredentials();
@@ -31,12 +33,47 @@ public class AuthorizationService {
 //            throw new UnauthorizedUser("Unknown user " + login);
 //        }
 
-        UserModel user = userRepository.findFirstByLogin(login);
+        UserModel user = userRepository.findFirstByUsername(login);
 
         if (user == null) {
-            throw new UnauthorizedUser("Unknown user " + login + password);
+            throw new UnauthorizedUser("Unknown user 2 " + login + password);
         }
-        return user;
+        return new Authentication() {
+            @Override
+            public Collection<? extends GrantedAuthority> getAuthorities() {
+                return null;
+            }
+
+            @Override
+            public Object getCredentials() {
+                return null;
+            }
+
+            @Override
+            public Object getDetails() {
+                return null;
+            }
+
+            @Override
+            public Object getPrincipal() {
+                return null;
+            }
+
+            @Override
+            public boolean isAuthenticated() {
+                return true;
+            }
+
+            @Override
+            public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
+
+            }
+
+            @Override
+            public String getName() {
+                return null;
+            }
+        };
     }
 
     private boolean isEmpty(String str) {

@@ -12,13 +12,14 @@ import java.util.ArrayList;
 
 public class RequestHeaderAuthenticationProvider implements AuthenticationProvider {
 
-    @Value("${api.auth.secret}")
-    private String apiAuthSecret;
+    @Value("some_token")
+    private String apiAuthSecret = "some_token";
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String authSecretKey = String.valueOf(authentication.getPrincipal());
-
+        String authSecretKey = String.valueOf(authentication.getPrincipal()).replace("Bearer ", "");
+        System.out.println(authSecretKey);
+        System.out.println(apiAuthSecret);
         if(StringUtils.isBlank(authSecretKey) || !authSecretKey.equals(apiAuthSecret)) {
             throw new BadCredentialsException("Bad Request Header Credentials");
         }

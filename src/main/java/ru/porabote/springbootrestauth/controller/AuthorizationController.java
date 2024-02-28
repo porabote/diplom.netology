@@ -33,23 +33,23 @@ public class AuthorizationController {
         String login = payload.get("login");
         String password = payload.get("password");
 
-        Authentication authenticationRequest =
-                UsernamePasswordAuthenticationToken.unauthenticated(login, password);
-        System.out.println(authenticationRequest);
-        UserModel user =
-                this.authorizationService.getAuthorities(authenticationRequest);
+//        Authentication authenticationRequest =
+//                UsernamePasswordAuthenticationToken.unauthenticated(login, password);
+//        System.out.println(authenticationRequest);
+//        Authentication authenticationResponse =
+//                this.authorizationService.getAuthorities(authenticationRequest);
 
 //        UsernamePasswordAuthenticationToken authReq
 //                = new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword());
 //        Authentication auth = authorizationService.authenticate(authReq);
 
-        SecurityContext sc = SecurityContextHolder.getContext();
-        sc.setAuthentication(authenticationRequest);
+       // SecurityContext sc = SecurityContextHolder.getContext();
+     //   sc.setAuthentication(authenticationRequest);
 //        HttpSession session = req.getSession(true);
 //        session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, sc);
         // ...
 
-        String token = "{\"auth-token\": \"" + user.getToken() + "\"}";
+        String token = "{\"auth-token\": \"" + "some_token" + "\"}";
         return new ResponseEntity<String>(token, HttpStatus.OK);
     }
 

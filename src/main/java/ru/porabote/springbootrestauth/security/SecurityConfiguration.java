@@ -43,12 +43,8 @@ public class SecurityConfiguration {
                 .addFilterAfter(requestHeaderAuthenticationFilter(), HeaderWriterFilter.class)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
                         .requestMatchers("/login").permitAll()
-                        .requestMatchers("/**").authenticated());
-//                .addFilterBefore(new TokenAuthenticationFilter(), BasicAuthenticationFilter.class)
-//                .authorizeHttpRequests((authorize) -> authorize
-//                        .requestMatchers("/login").permitAll()
-//                       // .anyRequest().authenticated()
-//                )
+                        .requestMatchers("/**").authenticated())
+
         ;
         return http.build();
     }
@@ -66,7 +62,7 @@ public class SecurityConfiguration {
         filter.setExceptionIfHeaderMissing(false);
         filter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/**"));
         filter.setAuthenticationManager(authenticationManager());
-
+        System.out.println(filter);
         return filter;
     }
 
