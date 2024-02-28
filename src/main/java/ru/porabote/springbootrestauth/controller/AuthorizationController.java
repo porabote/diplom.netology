@@ -1,14 +1,20 @@
 package ru.porabote.springbootrestauth.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import ru.porabote.springbootrestauth.model.UserModel;
 import ru.porabote.springbootrestauth.service.AuthorizationService;
 
 import java.util.Map;
+
+import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
 @RestController
 public class AuthorizationController {
@@ -26,12 +32,23 @@ public class AuthorizationController {
 
         String login = payload.get("login");
         String password = payload.get("password");
-        System.out.println(login);
+
         Authentication authenticationRequest =
                 UsernamePasswordAuthenticationToken.unauthenticated(login, password);
-        String token =
+        UserModel user =
                 this.authorizationService.getAuthorities(authenticationRequest);
+
+//        UsernamePasswordAuthenticationToken authReq
+//                = new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword());
+//        Authentication auth = authorizationService.authenticate(authReq);
+
+        SecurityContext sc = SecurityContextHolder.getContext();
+        sc.setAuthentication(authenticationRequest);
+//        HttpSession session = req.getSession(true);
+//        session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, sc);
         // ...
+
+        String token = "{\"auth-token\": \"" + user.getToken() + "\"}";
         return new ResponseEntity<String>(token, HttpStatus.OK);
     }
 

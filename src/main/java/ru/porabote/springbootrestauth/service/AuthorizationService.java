@@ -17,7 +17,7 @@ public class AuthorizationService {
         this.userRepository = userRepository;
     }
 
-    public String getAuthorities(Authentication authenticationRequest) {
+    public UserModel getAuthorities(Authentication authenticationRequest) {
 
         String login = authenticationRequest.getName();
         Object credentials = authenticationRequest.getCredentials();
@@ -32,11 +32,11 @@ public class AuthorizationService {
 //        }
 
         UserModel user = userRepository.findFirstByLogin(login);
-        System.out.println(user.getToken());
+
         if (user == null) {
             throw new UnauthorizedUser("Unknown user " + login + password);
         }
-        return "{\"auth-token\": \"" + user.getToken() + "\"}";
+        return user;
     }
 
     private boolean isEmpty(String str) {

@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cbcfd40-2ffb-4058-86b8-e436ddbe63f6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/security/TokenAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/controller/AuthorizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/controller/AuthorizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/security/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/security/SecurityConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/service/AuthorizationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/service/AuthorizationService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +100,7 @@
       <workItem from="1700082070833" duration="2000" />
       <workItem from="1702109977989" duration="10000" />
       <workItem from="1707485055968" duration="2446000" />
-      <workItem from="1708768705904" duration="47472000" />
+      <workItem from="1708768705904" duration="49021000" />
     </task>
     <servers />
   </component>
