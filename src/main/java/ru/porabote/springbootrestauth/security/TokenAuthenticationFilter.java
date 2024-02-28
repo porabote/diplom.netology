@@ -18,12 +18,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter
             throws ServletException, IOException
     {
 
-        String xAuth = request.getHeader("auth-token");//here is your token value
-        if (xAuth == null) {
-
-        }
-        //Place here your redis checks, get Authentication and so on
-      //  SecurityContextHolder.getContext().setAuthentication(auth);
+        String xAuth = request.getHeader("auth-token");
 
         filterChain.doFilter(request, response);
     }
