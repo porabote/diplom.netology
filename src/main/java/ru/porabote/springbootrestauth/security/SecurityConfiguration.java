@@ -2,10 +2,14 @@ package ru.porabote.springbootrestauth.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,13 +17,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.header.HeaderWriterFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -31,26 +39,47 @@ public class SecurityConfiguration {
         http
                 .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
-                .addFilterBefore(new TokenAuthenticationFilter(), BasicAuthenticationFilter.class)
-                .authorizeHttpRequests((authorize) -> authorize
-
+                .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterAfter(requestHeaderAuthenticationFilter(), HeaderWriterFilter.class)
+                .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
                         .requestMatchers("/login").permitAll()
-                       // .anyRequest().authenticated()
-                )
+                        .requestMatchers("/**").authenticated());
+//                .addFilterBefore(new TokenAuthenticationFilter(), BasicAuthenticationFilter.class)
+//                .authorizeHttpRequests((authorize) -> authorize
+//                        .requestMatchers("/login").permitAll()
+//                       // .anyRequest().authenticated()
+//                )
         ;
         return http.build();
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
-                .username("den")
-                .password("denp")
-                .roles("USER")
-                .build();
-        System.out.println(userDetails);
-        return new InMemoryUserDetailsManager(userDetails);
+    protected AuthenticationManager authenticationManager() {
+        AuthenticationProvider requestHeaderAuthenticationProvider = new RequestHeaderAuthenticationProvider();
+        return new ProviderManager(Collections.singletonList(requestHeaderAuthenticationProvider));
     }
+
+    @Bean
+    public RequestHeaderAuthenticationFilter requestHeaderAuthenticationFilter() {
+        RequestHeaderAuthenticationFilter filter = new RequestHeaderAuthenticationFilter();
+        filter.setPrincipalRequestHeader("auth-token");
+        filter.setExceptionIfHeaderMissing(false);
+        filter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/**"));
+        filter.setAuthenticationManager(authenticationManager());
+
+        return filter;
+    }
+
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        UserDetails userDetails = User.withDefaultPasswordEncoder()
+//                .username("den")
+//                .password("denp")
+//                .roles("USER")
+//                .build();
+//        System.out.println(userDetails);
+//        return new InMemoryUserDetailsManager(userDetails);
+//    }
 
 
     @Bean
@@ -65,10 +94,10 @@ public class SecurityConfiguration {
         return source;
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
 //    @Bean
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {

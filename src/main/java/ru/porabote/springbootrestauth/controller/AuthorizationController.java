@@ -35,6 +35,7 @@ public class AuthorizationController {
 
         Authentication authenticationRequest =
                 UsernamePasswordAuthenticationToken.unauthenticated(login, password);
+        System.out.println(authenticationRequest);
         UserModel user =
                 this.authorizationService.getAuthorities(authenticationRequest);
 

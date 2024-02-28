@@ -19,6 +19,9 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter
     {
 
         String xAuth = request.getHeader("auth-token");//here is your token value
+        if (xAuth == null) {
+
+        }
         //Place here your redis checks, get Authentication and so on
       //  SecurityContextHolder.getContext().setAuthentication(auth);
 
