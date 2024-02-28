@@ -2,6 +2,7 @@ package ru.porabote.springbootrestauth.service;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import ru.porabote.springbootrestauth.model.UserModel;
 import ru.porabote.springbootrestauth.repository.UserRepository;
 import ru.porabote.springbootrestauth.service.exception.InvalidCredentials;
 import ru.porabote.springbootrestauth.service.exception.UnauthorizedUser;
@@ -25,11 +26,16 @@ public class AuthorizationService {
         if (isEmpty(login) || isEmpty(password)) {
             throw new InvalidCredentials("User name or password is empty");
         }
-        List<Authorities> userAuthorities = userRepository.getUserAuthorities(login, password);
-        if (isEmpty(userAuthorities)) {
+//        List<Authorities> userAuthorities = userRepository.getUserAuthorities(login, password);
+//        if (isEmpty(userAuthorities)) {
+//            throw new UnauthorizedUser("Unknown user " + login);
+//        }
+
+        UserModel user = userRepository.findFirstByLoginAndPassword(login, password);
+
+        if (user == null) {
             throw new UnauthorizedUser("Unknown user " + login);
         }
-
         return "{\"auth-token\": \"blabla\"}";
     }
 

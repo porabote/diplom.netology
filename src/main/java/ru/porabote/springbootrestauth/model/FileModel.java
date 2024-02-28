@@ -28,6 +28,9 @@ public class FileModel {
     public String getFilename() {
         return filename;
     }
+    public void setFilename(String name) {
+        this.filename = name;
+    }
 
     public void setSize(long size) {
         this.size = size;
@@ -35,10 +38,6 @@ public class FileModel {
 
     public long getSize(long size) {
         return this.size;
-    }
-
-    public void setFilename(String name) {
-        this.filename = name;
     }
 
     public String getHash() {

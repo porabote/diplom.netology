@@ -20,5 +20,4 @@ public interface FileRepository extends CrudRepository<FileModel, Integer> {
     @Transactional
     FileModel findFirstByFilename(String filename);
 
-
 }

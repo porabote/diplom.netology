@@ -1,18 +1,15 @@
 package ru.porabote.springbootrestauth.repository;
 
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import ru.porabote.springbootrestauth.model.UserModel;
 import ru.porabote.springbootrestauth.service.Authorities;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static ru.porabote.springbootrestauth.service.Authorities.*;
-
 @Repository
-public class UserRepository {
+public interface UserRepository extends CrudRepository<UserModel, Integer> {
 
-    public List<Authorities> getUserAuthorities(String user, String password) {
-        return Arrays.asList(READ, WRITE, DELETE);
-    }
+    @Transactional
+    UserModel findFirstByLoginAndPassword(String login, String password);
 
 }
