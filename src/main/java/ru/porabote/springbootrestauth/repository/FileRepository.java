@@ -18,7 +18,7 @@ public interface FileRepository extends CrudRepository<FileModel, Integer> {
     Long deleteByFilename(String filename);
 
     @Transactional
-    List<FileModel> findFirstByFilename(String filename);
+    FileModel findFirstByFilename(String filename);
 
 
 }
