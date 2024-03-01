@@ -17,10 +17,6 @@ public class FilesController {
     @Autowired
     FileService fileService;
 
-//    public FilesController() throws IOException {
-//        this.fileService = new FileService();
-//    }
-
     @PostMapping(path="/file")
     public @ResponseBody String addFile (@RequestParam String filename, @RequestParam MultipartFile file) throws IOException {
 

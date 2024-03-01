@@ -2,6 +2,8 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.multipart.MultipartFile;
 import ru.porabote.springbootrestauth.model.FileModel;
 import ru.porabote.springbootrestauth.service.FileService;
@@ -30,7 +32,11 @@ public class FileTest {
         MockMultipartFile mockMultipartFile =
                 new MockMultipartFile("content", fileName, "text/plain", content);
 
-        //FileModel fileRecord = FileService.add(mockMultipartFile, fileName);
+        FileService fileService = new FileService();
+
+        FileModel fileRecord = fileService.add(mockMultipartFile, fileName);
+
+        Assertions.assertNotNull(fileRecord);
 
     }
 
