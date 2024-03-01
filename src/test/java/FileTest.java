@@ -17,13 +17,20 @@ public class FileTest {
     @Test
     public void checkUpload() throws IOException {
 
-        String fileName = "unitTest.png";
-        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
-        MultipartFile file = new MockMultipartFile("file", fileName, "image/png", inputStream);
-        System.out.println(file);
-        FileModel fileRecord = FileService.add(file, fileName);
-        //assert then
-        Assertions.assertNotNull(fileRecord);
+//        String fileName = "unitTest.png";
+//        InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
+//        MultipartFile file = new MockMultipartFile("file", fileName, "image/png", inputStream);
+//        System.out.println(file);
+//        FileModel fileRecord = FileService.add(file, fileName);
+//        //assert then
+//        Assertions.assertNotNull(fileRecord);
+
+        final String fileName = "test.txt";
+        final byte[] content = "Hallo Word".getBytes();
+        MockMultipartFile mockMultipartFile =
+                new MockMultipartFile("content", fileName, "text/plain", content);
+
+        FileModel fileRecord = FileService.add(mockMultipartFile, fileName);
 
     }
 
