@@ -45,7 +45,7 @@ public class FilesController {
     }
 
     @DeleteMapping(path="/file")
-    public @ResponseBody String addFile (@RequestParam String filename) throws IOException {
+    public @ResponseBody String deleteFile (@RequestParam String filename) throws IOException {
 
         String dirPath = this.UPLOAD_PATH;
         fileRepository.deleteByFilename(filename);
