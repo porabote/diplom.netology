@@ -12,33 +12,40 @@ import java.util.Map;
 @Controller
 public class FilesController {
 
+
+    FileService fileService;
+
+//    public FilesController() throws IOException {
+//        this.fileService = new FileService();
+//    }
+
     @PostMapping(path="/file")
     public @ResponseBody String addFile (@RequestParam String filename, @RequestParam MultipartFile file) throws IOException {
 
-        FileService.add(file, filename);
+        fileService.add(file, filename);
         return "Saved";
     }
 
     @DeleteMapping(path="/file")
     public @ResponseBody String deleteFile (@RequestParam String filename) throws IOException {
-        FileService.delete(filename);
+        fileService.delete(filename);
         return "Deleted";
     }
 
     @GetMapping(path="/file")
     public @ResponseBody FileModel download(@RequestParam String filename) {
-        return FileService.getFile(filename);
+        return fileService.getFile(filename);
     }
 
     @PutMapping(path="/file")
     public @ResponseBody String edit(@RequestBody Map<String, String> payload, @RequestParam(name="filename") String oldName) {
         String newName = payload.get("filename");
-        FileModel f = FileService.edit(oldName, newName);
+        FileModel f = fileService.edit(oldName, newName);
         return f.getFilename();
     }
 
     @GetMapping(path="/list")
     public @ResponseBody Iterable<FileModel> getAllUsers() {
-        return FileService.get();
+        return fileService.get();
     }
 }

@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cbcfd40-2ffb-4058-86b8-e436ddbe63f6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/repository/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/repository/FileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/controller/FilesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/controller/FilesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/service/FileService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +113,7 @@
       <workItem from="1700082070833" duration="2000" />
       <workItem from="1702109977989" duration="10000" />
       <workItem from="1707485055968" duration="2446000" />
-      <workItem from="1708768705904" duration="62131000" />
+      <workItem from="1708768705904" duration="63001000" />
     </task>
     <servers />
   </component>
