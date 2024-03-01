@@ -17,8 +17,12 @@ public class FileService {
 
     static String UPLOAD_PATH;
 
-    public FileService() throws IOException {
-        UPLOAD_PATH = new File(".").getCanonicalPath() + "/src/main/storage/uploaded/";
+    static {
+        try {
+            UPLOAD_PATH = new File(".").getCanonicalPath() + "/src/main/storage/uploaded/";
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Autowired // This means to get the bean called userRepository
