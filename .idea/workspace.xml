@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cbcfd40-2ffb-4058-86b8-e436ddbe63f6" name="Changes" comment="" />
+    <list default="true" id="8cbcfd40-2ffb-4058-86b8-e436ddbe63f6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/FileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/storage/uploaded/Снимок экрана 2023-10-03 в 15.44.58.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/storage/uploaded/unitTest.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +76,17 @@
       <recent name="ru.porabote.springbootrestauth.security" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.FileTest.checkUpload">
+    <configuration name="FileTest.checkUpload" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rest-server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FileTest" />
+      <option name="METHOD_NAME" value="checkUpload" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpringRestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="rest-server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ru.porabote.springbootrestauth.SpringRestApplication" />
@@ -80,6 +94,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.FileTest.checkUpload" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -94,7 +113,7 @@
       <workItem from="1700082070833" duration="2000" />
       <workItem from="1702109977989" duration="10000" />
       <workItem from="1707485055968" duration="2446000" />
-      <workItem from="1708768705904" duration="58370000" />
+      <workItem from="1708768705904" duration="60132000" />
     </task>
     <servers />
   </component>
