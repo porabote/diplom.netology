@@ -25,10 +25,10 @@ public class FilesController {
         return "Deleted";
     }
 
-//    @GetMapping(path="/file")
-//    public @ResponseBody FileModel download(@RequestParam String filename) {
-//        return fileRepository.findFirstByFilename(filename);
-//    }
+    @GetMapping(path="/file")
+    public @ResponseBody FileModel download(@RequestParam String filename) {
+        return FileService.getFile(filename);
+    }
 
     @PutMapping(path="/file")
     public @ResponseBody String edit(@RequestBody Map<String, String> payload, @RequestParam(name="filename") String oldName) {

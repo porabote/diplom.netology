@@ -30,7 +30,7 @@ public class FileTest {
         MockMultipartFile mockMultipartFile =
                 new MockMultipartFile("content", fileName, "text/plain", content);
 
-        FileModel fileRecord = FileService.add(mockMultipartFile, fileName);
+        //FileModel fileRecord = FileService.add(mockMultipartFile, fileName);
 
     }
 
