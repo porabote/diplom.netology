@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ru.porabote.springbootrestauth.components.FilesComponent;
+import ru.porabote.springbootrestauth.components.Logger;
 import ru.porabote.springbootrestauth.model.FileModel;
 import ru.porabote.springbootrestauth.repository.FileRepository;
 
@@ -43,7 +44,7 @@ public class FileService {
             f.setFilename(filename);
             f.setSize(fileTmp.length());
             fileRepository.save(f);
-
+            Logger.write("Загружен файл " + filename);
             return f;
         }
 
