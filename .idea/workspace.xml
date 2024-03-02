@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8cbcfd40-2ffb-4058-86b8-e436ddbe63f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/controller/FilesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/controller/FilesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/service/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/storage/uploaded/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/storage/uploaded/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/FileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/FileTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,11 +79,30 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.FileTest.checkUpload">
+    <configuration name="FileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rest-server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FileTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FileTest.checkUpload" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rest-server" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FileTest" />
       <option name="METHOD_NAME" value="checkUpload" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileTest.testEdit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rest-server" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FileTest" />
+      <option name="METHOD_NAME" value="testEdit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -95,6 +118,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.FileTest.checkUpload" />
+        <item itemvalue="JUnit.FileTest" />
+        <item itemvalue="JUnit.FileTest.testEdit" />
       </list>
     </recent_temporary>
   </component>
@@ -113,6 +138,7 @@
       <workItem from="1707485055968" duration="2446000" />
       <workItem from="1708768705904" duration="66853000" />
       <workItem from="1709401177246" duration="1136000" />
+      <workItem from="1709402326414" duration="1669000" />
     </task>
     <servers />
   </component>

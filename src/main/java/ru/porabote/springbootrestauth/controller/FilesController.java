@@ -18,7 +18,6 @@ public class FilesController {
 
     @PostMapping(path="/file")
     public @ResponseBody String addFile (@RequestParam String filename, @RequestParam MultipartFile file) throws IOException {
-
         fileService.add(file, filename);
         return "Saved";
     }

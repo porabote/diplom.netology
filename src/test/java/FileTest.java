@@ -1,24 +1,29 @@
 import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockMultipartFile;
-import ru.porabote.springbootrestauth.controller.FilesController;
+import org.springframework.stereotype.Controller;
 import ru.porabote.springbootrestauth.model.FileModel;
 import ru.porabote.springbootrestauth.service.FileService;
 
 import java.io.IOException;
 
+@Controller
 public class FileTest {
+
+    @Autowired
+    FileService fileService;
 
     @Test
     public void checkUpload() throws IOException {
 
-        FilesController controller = new FilesController();
+      //  FileService service = new FileService();
 
         final String fileName = "test.txt";
-        final byte[] content = "Hallo Word".getBytes();
+        final byte[] content = "Hello Word".getBytes();
         MockMultipartFile mockMultipartFile =
                 new MockMultipartFile("content", fileName, "text/plain", content);
 
-        String res = controller.addFile(fileName, mockMultipartFile);
+        FileModel res = fileService.add(mockMultipartFile, fileName);
         Assertions.assertEquals(res, "Saved");
 
     }
@@ -26,12 +31,12 @@ public class FileTest {
     @Test
     public void testEdit() throws IOException {
 
-        FileService service = new FileService();
+       // FileService service = new FileService();
 
         final String oldName = "test.txt";
         final String newName = "testRenamed.txt";
 
-        FileModel res = service.edit(oldName, newName);
+        FileModel res = fileService.edit(oldName, newName);
         Assertions.assertEquals(res.getFilename(), newName);
 
     }
@@ -39,11 +44,11 @@ public class FileTest {
     @Test
     public void testDelete() throws IOException {
 
-        FileService service = new FileService();
+       // FileService service = new FileService();
 
         final String fileName = "test.txt";
 
-        boolean res = service.delete(fileName);
+        boolean res = fileService.delete(fileName);
         Assertions.assertTrue(res);
 
     }

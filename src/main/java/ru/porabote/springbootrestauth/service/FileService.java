@@ -20,7 +20,7 @@ public class FileService {
     private String UPLOAD_PATH;
 
     public FileService() throws IOException {
-        fileRepository = fileRepository;
+     //   this.fileRepository = this.fileRepository;
         this.UPLOAD_PATH = new File(".").getCanonicalPath() + "/src/main/storage/uploaded/";
     }
 
