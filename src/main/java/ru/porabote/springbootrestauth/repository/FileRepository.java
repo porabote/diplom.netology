@@ -7,7 +7,7 @@ import ru.porabote.springbootrestauth.model.FileModel;
 public interface FileRepository extends CrudRepository<FileModel, Integer> {
 
     @Transactional
-    Long deleteByFilename(String filename);
+    void deleteByFilename(String filename);
 
     @Transactional
     FileModel findFirstByFilename(String filename);

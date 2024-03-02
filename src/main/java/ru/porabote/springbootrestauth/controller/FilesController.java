@@ -13,7 +13,6 @@ import java.util.Map;
 @Controller
 public class FilesController {
 
-
     @Autowired
     FileService fileService;
 
@@ -36,7 +35,7 @@ public class FilesController {
     }
 
     @PutMapping(path="/file")
-    public @ResponseBody String edit(@RequestBody Map<String, String> payload, @RequestParam(name="filename") String oldName) {
+    public @ResponseBody String edit(@RequestBody Map<String, String> payload, @RequestParam(name="filename") String oldName) throws IOException {
         String newName = payload.get("filename");
         FileModel f = fileService.edit(oldName, newName);
         return f.getFilename();

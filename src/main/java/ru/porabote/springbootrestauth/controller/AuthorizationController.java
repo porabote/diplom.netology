@@ -1,20 +1,14 @@
 package ru.porabote.springbootrestauth.controller;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import ru.porabote.springbootrestauth.model.UserModel;
 import ru.porabote.springbootrestauth.service.AuthorizationService;
-
 import java.util.Map;
-
-import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
 @RestController
 public class AuthorizationController {

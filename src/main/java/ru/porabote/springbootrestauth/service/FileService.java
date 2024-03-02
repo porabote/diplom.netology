@@ -17,11 +17,11 @@ public class FileService {
 
     @Autowired
     FileRepository fileRepository;
-    private static String UPLOAD_PATH;
+    private String UPLOAD_PATH;
 
     public FileService() throws IOException {
         fileRepository = fileRepository;
-        UPLOAD_PATH = new File(".").getCanonicalPath() + "/src/main/storage/uploaded/";
+        this.UPLOAD_PATH = new File(".").getCanonicalPath() + "/src/main/storage/uploaded/";
     }
 
     public FileModel getFile(String filename)
@@ -30,7 +30,7 @@ public class FileService {
     }
 
     public FileModel add(@RequestParam MultipartFile file, String filename) throws IOException {
-        String dirPath = UPLOAD_PATH;
+        String dirPath = this.UPLOAD_PATH;
         FilesComponent.makeDirectory(dirPath);
         FilesComponent.makeFile(dirPath + filename);
 
@@ -51,19 +51,18 @@ public class FileService {
         return null;
     }
 
-    public Boolean delete(String filename)
-    {
-        String dirPath = UPLOAD_PATH;
+    public Boolean delete(String filename) throws IOException {
+        String dirPath = this.UPLOAD_PATH;
         fileRepository.deleteByFilename(filename);
+        Logger.write("Удален файл " + filename);
         return true;
     }
 
-    public FileModel edit(String oldName, String newName)
-    {
+    public FileModel edit(String oldName, String newName) throws IOException {
         FileModel record = fileRepository.findFirstByFilename(oldName);
         record.setFilename(newName);
         fileRepository.save(record);
-
+        Logger.write("Изменено название файла с " + oldName + "на" + newName);
         return record;
     }
 

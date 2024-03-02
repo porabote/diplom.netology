@@ -1,6 +1,8 @@
 ## Files Cloud Service  application
 Storage for files.
 
+### Запуск приложения
+> src/main/java/ru/porabote/springbootrestauth/SpringRestApplication.java
 ### Авторизация
 > https::/localohost:8080/login
 >
