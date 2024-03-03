@@ -1,12 +1,21 @@
-import org.junit.jupiter.api.*;
+package ru.porabote.springbootrestauth.test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.context.junit4.SpringRunner;
+import ru.porabote.springbootrestauth.SpringRestApplication;
 import ru.porabote.springbootrestauth.model.FileModel;
 import ru.porabote.springbootrestauth.service.FileService;
 
 import java.io.IOException;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes= SpringRestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Controller
 public class FileTest {
 
@@ -15,8 +24,6 @@ public class FileTest {
 
     @Test
     public void checkUpload() throws IOException {
-
-      //  FileService service = new FileService();
 
         final String fileName = "test.txt";
         final byte[] content = "Hello Word".getBytes();
@@ -31,7 +38,7 @@ public class FileTest {
     @Test
     public void testEdit() throws IOException {
 
-       // FileService service = new FileService();
+        FileService fileService = new FileService();
 
         final String oldName = "test.txt";
         final String newName = "testRenamed.txt";
@@ -44,7 +51,7 @@ public class FileTest {
     @Test
     public void testDelete() throws IOException {
 
-       // FileService service = new FileService();
+        FileService fileService = new FileService();
 
         final String fileName = "test.txt";
 
