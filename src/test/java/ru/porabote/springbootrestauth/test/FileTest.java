@@ -1,12 +1,14 @@
 package ru.porabote.springbootrestauth.test;
 
+
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.porabote.springbootrestauth.SpringRestApplication;
 import ru.porabote.springbootrestauth.model.FileModel;
@@ -15,8 +17,11 @@ import ru.porabote.springbootrestauth.service.FileService;
 import java.io.IOException;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes= SpringRestApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Controller
+@SpringBootTest(
+        classes= SpringRestApplication.class,
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@TestPropertySource(
+//        locations = "classpath:application-integrationtest.properties")
 public class FileTest {
 
     @Autowired

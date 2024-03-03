@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8cbcfd40-2ffb-4058-86b8-e436ddbe63f6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/repository/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/porabote/springbootrestauth/repository/FileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/storage/logs/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/storage/logs/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/porabote/springbootrestauth/test/FileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/porabote/springbootrestauth/test/FileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/porabote/springbootrestauth/test/FileTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +136,7 @@
       <workItem from="1707485055968" duration="2446000" />
       <workItem from="1708768705904" duration="66853000" />
       <workItem from="1709401177246" duration="1136000" />
-      <workItem from="1709402326414" duration="7149000" />
+      <workItem from="1709402326414" duration="7790000" />
     </task>
     <servers />
   </component>
