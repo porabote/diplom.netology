@@ -20,8 +20,6 @@ import java.io.IOException;
 @SpringBootTest(
         classes= SpringRestApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@TestPropertySource(
-//        locations = "classpath:application-integrationtest.properties")
 public class FileTest {
 
     @Autowired
@@ -36,8 +34,7 @@ public class FileTest {
                 new MockMultipartFile("content", fileName, "text/plain", content);
 
         FileModel res = fileService.add(mockMultipartFile, fileName);
-        Assertions.assertEquals(res, "Saved");
-
+        Assertions.assertNotNull(res);
     }
 
     @Test

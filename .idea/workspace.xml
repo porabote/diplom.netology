@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cbcfd40-2ffb-4058-86b8-e436ddbe63f6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/porabote/springbootrestauth/test/FileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/porabote/springbootrestauth/test/FileTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="8cbcfd40-2ffb-4058-86b8-e436ddbe63f6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +73,7 @@
       <recent name="ru.porabote.springbootrestauth.security" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FileTest.checkUpload">
+  <component name="RunManager" selected="JUnit.FileTest.testDelete">
     <configuration name="FileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rest-server" />
       <option name="PACKAGE_NAME" value="ru.porabote.springbootrestauth.test" />
@@ -91,6 +88,22 @@
       <option name="PACKAGE_NAME" value="ru.porabote.springbootrestauth.test" />
       <option name="MAIN_CLASS_NAME" value="ru.porabote.springbootrestauth.test.FileTest" />
       <option name="METHOD_NAME" value="checkUpload" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileTest.testDelete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rest-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.porabote.springbootrestauth.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.porabote.springbootrestauth.test" />
+      <option name="MAIN_CLASS_NAME" value="ru.porabote.springbootrestauth.test.FileTest" />
+      <option name="METHOD_NAME" value="testDelete" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -115,6 +128,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FileTest.testDelete" />
         <item itemvalue="JUnit.FileTest.checkUpload" />
         <item itemvalue="JUnit.FileTest" />
         <item itemvalue="JUnit.FileTest.testEdit" />
@@ -136,7 +150,7 @@
       <workItem from="1707485055968" duration="2446000" />
       <workItem from="1708768705904" duration="66853000" />
       <workItem from="1709401177246" duration="1136000" />
-      <workItem from="1709402326414" duration="7790000" />
+      <workItem from="1709402326414" duration="8105000" />
     </task>
     <servers />
   </component>
